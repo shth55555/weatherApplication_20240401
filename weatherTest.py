@@ -43,3 +43,5 @@ print(dustInfo)   #미세먼지 정보
 
 dustInfo2 = todayInfoText[1].find("span",{"class":"txt"}).text
 print(dustInfo2)    #초미세먼지 정보
+
+
