@@ -26,6 +26,10 @@ yesterdayTempText = weatherSoup.find("span", "temperature up").text
 yesterdayTempText = yesterdayTempText.strip()
 print(f"어제날씨비교 : {yesterdayTempText}")
 
+
+
+asdf
+
 todayTempText = weatherSoup.find("span", {"class":"weather before_slash"}).text
 todayTempText = todayTempText.strip()
 print(f"오늘 날씨 : {todayTempText}")
