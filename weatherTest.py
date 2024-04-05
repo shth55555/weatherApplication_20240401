@@ -28,7 +28,7 @@ print(f"어제날씨비교 : {yesterdayTempText}")
 
 
 
-asdf
+
 
 todayTempText = weatherSoup.find("span", {"class":"weather before_slash"}).text
 todayTempText = todayTempText.strip()
@@ -48,6 +48,7 @@ dustInfo = dustInfo.strip()
 print(f"미세먼지 :{dustInfo}")   #미세먼지 정보
 
 dustInfo2 = todayInfoText[1].find("span",{"class":"txt"}).text
+dustInfo2 = dustInfo2.strip()
 print(f"초미세먼지 : {dustInfo2}")    #초미세먼지 정보
 
 
