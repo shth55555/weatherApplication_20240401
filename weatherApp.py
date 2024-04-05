@@ -90,6 +90,8 @@ class WeatherApp(QMainWindow, form_class):
 
 
 
+
+
     def setWeatherImage(self, weatherText):  # 날씨에 따른 이미지 출력 함수
         if weatherText == "맑음":
             weatherImage = QPixmap("img/sun.png")  # 이미지 불러와서 저장하기
