@@ -7,13 +7,7 @@ from bs4 import BeautifulSoup
 from PyQt5 import uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
-
 from PyQt5.QtCore import Qt
-
-import time
-import threading
-
-
 
 form_class = uic.loadUiType("ui/weatherUi.ui")[0]
 # ui 폴더 내의 디자인된 ui 불러오기
@@ -24,14 +18,15 @@ class WeatherApp(QMainWindow, form_class):
         self.setupUi(self)
         self.setWindowTitle("날씨 검색 프로그램")
         self.setWindowIcon(QIcon("img/weather_icon.png"))
-        self.statusBar().showMessage("WEATHER SEARCH APP VER 0.6")
-        self.setWindowFlags(Qt.WindowStaysOnTopHint) #윈도우를 고정
-        self.weather_search() #프로그램 실행시 자동으로 현재 위치
+        self.statusBar().showMessage("WEATHER SEARCH APP VER 1.1")
+        self.setWindowFlags(Qt.WindowStaysOnTopHint)  # 윈도우를 항상 맨위로 유지
+        self.weather_search()  # 프로그램 실행시 자동으로 현재 위치 날씨 출력
 
         self.search_btn.clicked.connect(self.weather_search)
         self.search_btn.clicked.connect(self.reflashTimer)
-        self.area_input.returnPressed.connet(self.weather_search) #라인에디서 상 엔터키 이벤트가 발생시 함수 호출 ->returnPressed
-        self.area_input.returnPressed.connet(self.reflashTimer)
+        self.area_input.returnPressed.connect(self.weather_search)
+        self.area_input.returnPressed.connect(self.reflashTimer)
+
     def weather_search(self):
         inputArea = self.area_input.text()  # 사용자가 입력한 지역명 텍스트 가져오기
 
@@ -159,11 +154,12 @@ class WeatherApp(QMainWindow, form_class):
         else:
             self.weather_img.setText(weatherText)
 
-    def reflashTimer(self): #다시 크롤링을 해오는 타이머 함수
-        self.weather_search() #날씨 조회 함수 호출
-        threading.Timer(60,self.reflashTimer).start()
-
-
+    def reflashTimer(self):  # 다시 크롤링을 해오는 타이머 함수
+        print(112)
+        self.weather_search()  # 날씨 조회 함수 호출
+        print(114)
+        threading.Timer(60, self.reflashTimer).start()
+        print(116)
 
 
 if __name__ == "__main__":
