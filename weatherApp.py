@@ -6,7 +6,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
-form_class = uic.loadUiType("ui/weather.ui")[0]
+form_class = uic.loadUiType("ui/weatherUi.ui")[0]
 
 
 # ui 폴더 내의 디자인된 ui 불러오기
@@ -80,16 +80,6 @@ class WeatherApp(QMainWindow, form_class):
         # print(74)
         self.dust2_info.setText(dust2Info)
         # print(76)
-    except:
-        self.area_title.setText("입력 지역명 오류")
-        self.setWeatherImage("-")
-        self.yester_temper.setText(f"{inputArea}지역은 존재하지 않습니다")
-        self.sense_temper.setText("-")
-        self.dust1_info.setText("-")
-        self.dust2_info.setText("-")
-
-
-
 
     def setWeatherImage(self, weatherText):  # 날씨에 따른 이미지 출력 함수
         if weatherText == "맑음":
@@ -98,6 +88,15 @@ class WeatherApp(QMainWindow, form_class):
             # ui에 준비된 label 이름에 이미지 출력하기
         elif weatherText == "구름많음":
             weatherImage = QPixmap("img/cloud.png")  # 이미지 불러와서 저장하기
+            self.weather_img.setPixmap(QPixmap(weatherImage))
+        elif weatherText == "흐림":
+            weatherImage = QPixmap("img/cloud.png")  # 이미지 불러와서 저장하기
+            self.weather_img.setPixmap(QPixmap(weatherImage))
+        elif weatherText == "비":
+            weatherImage = QPixmap("img/rain.png")  # 이미지 불러와서 저장하기
+            self.weather_img.setPixmap(QPixmap(weatherImage))
+        elif weatherText == "눈":
+            weatherImage = QPixmap("img/snow.png")  # 이미지 불러와서 저장하기
             self.weather_img.setPixmap(QPixmap(weatherImage))
         else:
             self.weather_img.setText(weatherText)
